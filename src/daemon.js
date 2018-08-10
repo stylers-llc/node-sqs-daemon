@@ -6,7 +6,8 @@ class Daemon {
   }
 
   run() {
-    const worker = new Worker(Object.assign(this.config, { callback: worker.run }));
+    const worker = new Worker(this.config);
+    worker.callback = () => worker.run();
     worker.run();
   }
 }

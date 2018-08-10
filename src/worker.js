@@ -1,4 +1,5 @@
 const log = require('./log');
+const SqsClient = require('./sqsClient');
 
 class Worker {
   constructor(config) {
