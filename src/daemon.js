@@ -2,14 +2,12 @@ const Worker = require('./worker');
 
 class Daemon {
   constructor(config) {
-    this.worker = new Worker();
+    this.config = config;
   }
 
   run() {
-    const daemon = () => {
-      this.worker.run(daemon);
-    };
-    daemon();
+    const worker = new Worker(Object.assign(this.config, { callback: worker.run }));
+    worker.run();
   }
 }
 
