@@ -18,7 +18,7 @@ class Worker {
     this.sqsClient.receiveMessage(
       (message, receiptHandle) => {
         this.consumer(
-          data,
+          message,
           () => this.deleteMessage(message, receiptHandle),
           () => this.callback(),
         );
