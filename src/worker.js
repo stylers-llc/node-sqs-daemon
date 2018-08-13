@@ -3,7 +3,9 @@ const SqsClient = require('./sqsClient');
 
 class Worker {
   constructor(config) {
-    const { sqs, queueUrl, consumer, callback, timeout } = config;
+    const {
+      sqs, queueUrl, consumer, callback, timeout,
+    } = config;
     this.sqsClient = new SqsClient(sqs, queueUrl);
     this.consumer = consumer;
     this.callback = callback;
@@ -34,7 +36,7 @@ class Worker {
     );
   }
 
-  deleteMessage(message, receiptHandle, callback) {
+  deleteMessage(message, receiptHandle) {
     this.sqsClient.deleteMessage(
       receiptHandle,
       () => {
