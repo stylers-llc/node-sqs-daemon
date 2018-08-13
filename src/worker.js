@@ -38,7 +38,7 @@ class Worker {
     this.sqsClient.deleteMessage(
       receiptHandle,
       () => {
-        log('Successfully submited', message);
+        log('Successfully consumed', message);
         this.callback();
       },
       (error) => {
